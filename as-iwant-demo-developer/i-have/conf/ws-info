@@ -1,0 +1,5 @@
+# paths are relative to this file's directory
+WSNAME=iwant-demo
+WSROOT=../../..
+WSDEFDEF_MODULE=../wsdefdef
+WSDEFDEF_CLASS=org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider

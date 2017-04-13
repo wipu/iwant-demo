@@ -1,0 +1,41 @@
+<project name="iwant" default="wish" basedir="">
+
+	<!-- $Id: build.xml 804 2015-06-02 05:19:17Z wipu_ $ -->
+
+	<property name="as-someone" location="../../.." />
+	<property name="entry-src" location="${as-someone}/with/java" />
+
+	<target name="wish" depends="entry-classes, empty-wish, nonempty-wish" />
+
+	<target name="empty-wish" unless="wish">
+		<echo message="Try again with -Dwish=list-of/targets" />
+	</target>
+
+	<target name="nonempty-wish" if="wish">
+		<iwant>
+			<wish>
+				<arg value="${wish}" />
+			</wish>
+		</iwant>
+	</target>
+
+	<macrodef name="iwant">
+		<element name="wish" />
+		<sequential>
+			<fail unless="entry-classes" />
+			<fail unless="as-someone" />
+			<java classpath="${entry-classes}" classname="net.sf.iwant.entry.Iwant" failonerror="true" fork="true">
+				<jvmarg value="-Xmx1024m" />
+				<arg file="${as-someone}" />
+				<wish />
+			</java>
+		</sequential>
+	</macrodef>
+
+	<target name="entry-classes">
+		<property name="entry-classes" location="${as-someone}/.i-cached/entry-classes" />
+		<mkdir dir="${entry-classes}" />
+		<javac debug="true" destdir="${entry-classes}" encoding="UTF-8" includeantruntime="false" source="1.8" srcdir="${entry-src}" />
+	</target>
+
+</project>
