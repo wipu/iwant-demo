@@ -34,6 +34,8 @@ To see the contents of the application cli distribution and to run it issue the 
     as-iwant-demo-developer/with/bash/iwant/target/cli-distro/as-path | xargs -r find
     as-iwant-demo-developer/with/bash/iwant/target/cli-distro/as-path && as-iwant-demo-developer/.i-cached/target/cli-distro/run.sh
 
+_Note how easily `CliDistro.java` includes all runtime dependencies of the application in the lib directory of the distribution._
+
 Follow the error message of the application. For example, to print the first 4 prime numbers, type:
 
     as-iwant-demo-developer/with/bash/iwant/target/cli-distro/as-path && as-iwant-demo-developer/.i-cached/target/cli-distro/run.sh --primes 4
