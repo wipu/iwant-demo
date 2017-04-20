@@ -17,6 +17,8 @@ Now that you have the Eclipse settings generated, you can import the projects to
 
 Modules `iwant-demo-wsdef` and `iwant-demo-wsdefdef` define the build, and the rest of the modules are production modules. Your first entrypoint to the build is `IwantDemoWorkspaceModuleProvider`. (Use shift-ctrl-T to open it with Eclipse.) It defines the actual build module. The entrypoint to the build, defined as string here, is `IwantDemoWorkspaceFactory`. From that you can navigate your way with ctrl-click.
 
+_Note how you can study how the build is defined by utilizing the Java type system and Eclipse navigation features instead of reading documentation and following loosely typed references and conventions._
+
 ## Studying test coverage (aka "running the tests")
 
 When you have finished your initial study of the code you can make your next wish to get a test coverage report and pipe it to a browser:
