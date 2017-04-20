@@ -23,7 +23,7 @@ When you have finished your initial study of the code you can make your next wis
 
     as-iwant-demo-developer/with/bash/iwant/target/jacoco-report-all/as-path | xargs -r -Ixxx chrome xxx/index.html
 
-_Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't touch anything._
+_Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching something._
 
 ## Building and running the application
 
