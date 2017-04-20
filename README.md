@@ -11,9 +11,9 @@ As this is the first wish, it forces the iwant bootstrapper to bootstrap iwant a
 
     as-iwant-demo-developer/with/bash/iwant/side-effect/eclipse-settings/effective
 
-Now that you have the Eclipse settings generated, you can import the projects to Eclipse (don't copy them to the workspace, just import).
+Now that you have the Eclipse settings generated, you can import the projects to Eclipse. (Don't copy them to the workspace, just import.)
 
-Modules `iwant-demo-wsdef` and `iwant-demo-wsdefdef` define the build, and the rest of the modules are production modules. Your first entrypoint to the build is `IwantDemoWorkspaceModuleProvider` (Use shift-ctrl-T to open it with Eclipse.) It defines the actual build module. The entrypoint to the build, defined as string here, is `IwantDemoWorkspaceFactory`. From that you can navigate your way with ctrl-click.
+Modules `iwant-demo-wsdef` and `iwant-demo-wsdefdef` define the build, and the rest of the modules are production modules. Your first entrypoint to the build is `IwantDemoWorkspaceModuleProvider`. (Use shift-ctrl-T to open it with Eclipse.) It defines the actual build module. The entrypoint to the build, defined as string here, is `IwantDemoWorkspaceFactory`. From that you can navigate your way with ctrl-click.
 
 ## Studying test coverage (aka "running the tests")
 
