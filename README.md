@@ -27,6 +27,8 @@ When you have finished your initial study of the code you can make your next wis
 
 _Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching anything._
 
+_Also note how all progress output of refreshing a target is printed to stderr, not stdout, so the output of the wish, the __path__ of the target, is the only thing that goes to the next process in the pipeline - xargs and chrome in this case._
+
 ## Building and running the application
 
 To see the contents of the application cli distribution and to run it issue the following commands:
