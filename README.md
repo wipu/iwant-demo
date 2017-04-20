@@ -1,5 +1,5 @@
 # iwant-demo
-Demonstrating features of the iwant build system
+A project that demonstrates features of the iwant build system
 
 ## Quick start: Studying the code with Eclipse
 
