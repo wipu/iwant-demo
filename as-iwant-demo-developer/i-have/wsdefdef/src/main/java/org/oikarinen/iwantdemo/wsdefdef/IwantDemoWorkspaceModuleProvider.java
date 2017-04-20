@@ -12,7 +12,10 @@ public class IwantDemoWorkspaceModuleProvider
 		return JavaSrcModule.with().name("iwant-demo-wsdef")
 				.locationUnderWsRoot("as-iwant-demo-developer/i-have/wsdef")
 				.mainJava("src/main/java").mainDeps(ctx.iwantApiModules())
-				.mainDeps(ctx.wsdefdefModule()).end();
+				.mainDeps(ctx.wsdefdefModule())
+				.mainDeps(ctx.iwantPlugin().jacoco().withDependencies())
+				.mainDeps(ctx.iwantPlugin().javamodules().withDependencies())
+				.end();
 	}
 
 	@Override
