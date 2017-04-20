@@ -32,3 +32,9 @@ Follow the error message of the application. For example, to print the first 4 p
 
     as-iwant-demo-developer/with/bash/iwant/target/cli-distro/as-path && as-iwant-demo-developer/.i-cached/target/cli-distro/run.sh --primes 4
 
+## Static code analysis with findbugs
+
+You can get a findbugs report by running:
+
+    as-iwant-demo-developer/with/bash/iwant/target/findbugs-report/as-path | xargs -r -Ixxx chrome xxx/findbugs-report/findbugs-report.html
+
