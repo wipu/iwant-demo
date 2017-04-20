@@ -3,7 +3,7 @@ A project that demonstrates features of the [iwant](http://iwant.sourceforge.net
 
 ## Quick start: Studying the code with Eclipse
 
-After cloning this, use tab in your bash shell to type the first wish:
+After cloning this, use tab in your shell to type the first wish:
 
     as-iwant-demo-developer/with/bash/iwant/help.sh
 
