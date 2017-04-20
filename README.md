@@ -7,6 +7,8 @@ After cloning this repository, cd to it and type your first wish to shell (remem
 
     as-iwant-demo-developer/with/bash/iwant/help.sh
 
+_Note how you don't need to install or configure anything. A small amount of bootstrapping code will ensure you have the correct version of iwant serving your build wishes._
+
 As this is the first wish, it forces the iwant bootstrapper to bootstrap iwant and generate more wishes. Use tab again and issue the next wish:
 
     as-iwant-demo-developer/with/bash/iwant/side-effect/eclipse-settings/effective
