@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REV=872
+REV=873
 
 set -eu
 
