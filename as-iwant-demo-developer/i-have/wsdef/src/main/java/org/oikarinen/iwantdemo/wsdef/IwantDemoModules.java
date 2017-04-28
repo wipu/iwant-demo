@@ -4,12 +4,17 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider;
+
 import net.sf.iwant.api.javamodules.JavaBinModule;
+import net.sf.iwant.api.javamodules.JavaClasses;
 import net.sf.iwant.api.javamodules.JavaModule;
+import net.sf.iwant.api.javamodules.JavaModules;
 import net.sf.iwant.api.javamodules.JavaSrcModule;
 import net.sf.iwant.api.javamodules.JavaSrcModule.IwantSrcModuleSpex;
+import net.sf.iwant.api.model.Path;
 import net.sf.iwant.api.model.Source;
-import net.sf.iwant.plugin.javamodules.JavaModules;
+import net.sf.iwant.api.zip.Jar;
 
 public class IwantDemoModules extends JavaModules {
 
@@ -34,15 +39,7 @@ public class IwantDemoModules extends JavaModules {
 	private final JavaModule hamcrestAll = binModule("org.hamcrest",
 			"hamcrest-all", HAMCREST_VER);
 
-	/**
-	 * The minimum of hamcrest to make junit work (a runtime dependency of
-	 * junit)
-	 */
-	private final JavaModule hamcrestCore = binModule("org.hamcrest",
-			"hamcrest-core", HAMCREST_VER);
-
-	private final JavaModule junit = binModule("junit", "junit", "4.12",
-			hamcrestCore);
+	private final JavaModule junit = IwantDemoWorkspaceModuleProvider.junit;
 
 	private final JavaModule log4j = binModule("log4j", "log4j", "1.2.17");
 
@@ -61,26 +58,47 @@ public class IwantDemoModules extends JavaModules {
 					.underWsroot("common-resources/test-log4j-properties"))
 			.end();
 
+	private final Path generatedJavabeansJava = new GeneratedJavaBean(
+			"generatedJavabeansJava.java",
+			Source.underWsroot("generated-javabeans/beans.txt"));
+	private final Path generatedJavabeansClasses = JavaClasses.with()
+			.name("generatedJavabeansJava.classes")
+			.srcDirs(generatedJavabeansJava).end();
+	private final Path generatedJavabeansJar = Jar.with()
+			.name("generatedJavabeansJava.jar")
+			.classes(generatedJavabeansClasses).end();
+	private final JavaModule generatedJavabeans = JavaBinModule
+			.providing(generatedJavabeansJar, generatedJavabeansJava).end();
+
 	// src modules
 
-	private final JavaSrcModule mathLib = srcModule("math-lib")
+	private final JavaSrcModule mathLib = iwantDemoModule("math-lib")
 			.noMainResources().mainDeps(commonsMath, slf4jApi)
 			.testDeps(hamcrestAll, junit).testRuntimeDeps(slf4jLog4j12).end();
 
-	final JavaSrcModule cli = srcModule("cli")
-			.mainDeps(commonsCli, mathLib, slf4jApi)
+	private final JavaSrcModule javabeanGenerator = buildTimeModule(
+			IwantDemoWorkspaceModuleProvider.javabeanGenerator);
+
+	final JavaSrcModule cli = iwantDemoModule("cli")
+			.mainDeps(commonsCli, generatedJavabeans, mathLib, slf4jApi)
 			.mainRuntimeDeps(slf4jLog4j12).testDeps(commonsIo, junit).end();
 
 	// utils
 
+	private IwantSrcModuleSpex iwantDemoModule(String name) {
+		return srcModule(
+				IwantDemoWorkspaceModuleProvider.MODULE_NAME_PREFIX + name);
+	}
+
 	/**
-	 * This is a convenience override for consistent prefixing of modules names.
-	 * See {@link #commonSettings(IwantSrcModuleSpex)} commonSettings for other
-	 * customizations.
+	 * Since buildTimeModules are defined by
+	 * {@link IwantDemoWorkspaceModuleProvider}, they don't go through the
+	 * srcModule method and thus don't get automatically added to allSrcModules.
+	 * We handle that here.
 	 */
-	@Override
-	protected IwantSrcModuleSpex srcModule(String name) {
-		return super.srcModule("iwant-demo-" + name);
+	private JavaSrcModule buildTimeModule(JavaSrcModule module) {
+		allSrcModules().add(module);
+		return module;
 	}
 
 	/**
@@ -102,7 +120,7 @@ public class IwantDemoModules extends JavaModules {
 	 * @return
 	 */
 	Set<JavaSrcModule> entrypointModules() {
-		return new LinkedHashSet<>(Arrays.asList(cli));
+		return new LinkedHashSet<>(Arrays.asList(cli, javabeanGenerator));
 	}
 
 }

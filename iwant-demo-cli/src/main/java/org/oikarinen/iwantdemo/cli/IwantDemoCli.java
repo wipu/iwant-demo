@@ -11,6 +11,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.oikarinen.generatedbeans.a.GeneratedBean;
 import org.oikarinen.iwantdemo.mathlib.Mathlib;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,11 @@ public class IwantDemoCli {
 		primes.setArgName("count");
 		o.addOption(primes);
 
+		Option generatedBean = new Option("g", "generatedbean", true,
+				"use generated javabean by setting s=<sValue>");
+		generatedBean.setArgName("sValue");
+		o.addOption(generatedBean);
+
 		CommandLineParser parser = new DefaultParser();
 
 		CommandLine cmd;
@@ -62,8 +68,21 @@ public class IwantDemoCli {
 			printPrimes(count);
 			return;
 		}
+		if (cmd.hasOption(generatedBean.getOpt())) {
+			String v = cmd.getOptionValue(generatedBean.getOpt());
+			useGeneratedBean(v);
+			return;
+		}
 		showHelpAndExit(o);
 		return;
+	}
+
+	private void useGeneratedBean(String v) {
+		out.println("Using " + GeneratedBean.class + " by setting s=" + v);
+		GeneratedBean b = new GeneratedBean();
+		out.println("initial s: " + b.getS());
+		b.setS(v);
+		out.println("s after setting: " + b.getS());
 	}
 
 	private void printPrimes(int count) {

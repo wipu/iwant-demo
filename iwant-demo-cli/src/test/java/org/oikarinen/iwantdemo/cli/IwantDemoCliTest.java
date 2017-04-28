@@ -28,4 +28,16 @@ public class IwantDemoCliTest {
 				new String(outBytes.toByteArray(), StandardCharsets.UTF_8));
 	}
 
+	@Test
+	public void generatedBean() {
+		new IwantDemoCli(out)
+				.doMain(new String[] { "--generatedbean", "new value" });
+
+		assertEquals(
+				"Using class org.oikarinen.generatedbeans.a.GeneratedBean by setting s=new value\n"
+						+ "initial s: null\n" + "s after setting: new value\n"
+						+ "",
+				new String(outBytes.toByteArray(), StandardCharsets.UTF_8));
+	}
+
 }

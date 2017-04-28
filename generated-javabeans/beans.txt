@@ -1,0 +1,4 @@
+org.oikarinen.generatedbeans.a
+GeneratedBean
+String s
+int i
