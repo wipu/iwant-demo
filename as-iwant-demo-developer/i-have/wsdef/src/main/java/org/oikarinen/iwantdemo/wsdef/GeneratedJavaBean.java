@@ -8,20 +8,29 @@ import org.oikarinen.iwantdemo.javabeangenerator.JavabeanGenerator;
 import net.sf.iwant.api.model.Source;
 import net.sf.iwant.api.model.TargetEvaluationContext;
 import net.sf.iwant.api.target.TargetBase;
+import net.sf.iwant.core.javafinder.PathToClasspathLocationOf;
+import net.sf.iwant.core.javafinder.WsdefJavaOf;
 
 public class GeneratedJavaBean extends TargetBase {
 
-	private Source source;
+	private final Source source;
+	private final Source me;
 
-	public GeneratedJavaBean(String name, Source source) {
+	public GeneratedJavaBean(String name, Source source,
+			WsdefJavaOf wsdefJavaOf) {
 		super(name);
 		this.source = source;
+		this.me = wsdefJavaOf.classUnderSrcMainJava(getClass());
 	}
 
 	@Override
 	protected IngredientsAndParametersDefined ingredientsAndParameters(
 			IngredientsAndParametersPlease iUse) {
-		return iUse.ingredients("source", source).nothingElse();
+		return iUse.ingredients("me", me)
+				.ingredients("JavabeanGenerator.class",
+						PathToClasspathLocationOf
+								.class_(JavabeanGenerator.class))
+				.ingredients("source", source).nothingElse();
 	}
 
 	@Override

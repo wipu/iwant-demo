@@ -14,7 +14,9 @@ import net.sf.iwant.api.model.Target;
 import net.sf.iwant.api.wsdef.SideEffectDefinitionContext;
 import net.sf.iwant.api.wsdef.TargetDefinitionContext;
 import net.sf.iwant.api.wsdef.Workspace;
+import net.sf.iwant.api.wsdef.WorkspaceContext;
 import net.sf.iwant.core.download.TestedIwantDependencies;
+import net.sf.iwant.core.javafinder.WsdefJavaOf;
 import net.sf.iwant.eclipsesettings.EclipseSettings;
 import net.sf.iwant.plugin.findbugs.FindbugsDistribution;
 import net.sf.iwant.plugin.findbugs.FindbugsOutputFormat;
@@ -24,18 +26,23 @@ import net.sf.iwant.plugin.jacoco.JacocoTargetsOfJavaModules;
 
 public class IwantDemoWorkspace implements Workspace {
 
-	private final IwantDemoModules modules = new IwantDemoModules();
-
+	private final WsdefJavaOf wsdefJavaOf;
+	private final IwantDemoModules modules;
 	private final Path mainLog4jProperties = Source.underWsroot(
 			"common-resources/main-log4j-properties/log4j.properties");
-
 	private final FindbugsDistribution findbugs = FindbugsDistribution
 			.ofVersion("3.0.1");
+
+	public IwantDemoWorkspace(WorkspaceContext ctx) {
+		this.wsdefJavaOf = new WsdefJavaOf(ctx);
+		this.modules = new IwantDemoModules(wsdefJavaOf);
+	}
 
 	@Override
 	public List<? extends Target> targets(TargetDefinitionContext ctx) {
 		List<Target> t = new ArrayList<>();
-		t.add(new CliDistro("cli-distro", modules.cli, mainLog4jProperties));
+		t.add(new CliDistro("cli-distro", modules.cli, mainLog4jProperties,
+				wsdefJavaOf));
 		t.add(findbugsReport());
 		t.add(jacocoReportAll());
 		return t;

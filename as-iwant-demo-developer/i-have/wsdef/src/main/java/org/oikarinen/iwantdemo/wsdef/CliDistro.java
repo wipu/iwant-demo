@@ -7,8 +7,10 @@ import org.apache.commons.io.FileUtils;
 
 import net.sf.iwant.api.javamodules.JavaSrcModule;
 import net.sf.iwant.api.model.Path;
+import net.sf.iwant.api.model.Source;
 import net.sf.iwant.api.model.TargetEvaluationContext;
 import net.sf.iwant.api.target.TargetBase;
+import net.sf.iwant.core.javafinder.WsdefJavaOf;
 import net.sf.iwant.core.javamodules.JavaModules;
 
 public class CliDistro extends TargetBase {
@@ -16,19 +18,22 @@ public class CliDistro extends TargetBase {
 	private static final String MAIN_CLASS_NAME = "org.oikarinen.iwantdemo.cli.IwantDemoCli";
 	private final List<Path> runtimeJars;
 	private final Path log4jProperties;
+	private final Source me;
 
 	public CliDistro(String name, JavaSrcModule mainModule,
-			Path log4jProperties) {
+			Path log4jProperties, WsdefJavaOf wsdefJavaOf) {
 		super(name);
 		this.log4jProperties = log4jProperties;
 		this.runtimeJars = JavaModules
 				.mainArtifactJarsOf(JavaModules.runtimeDepsOf(mainModule));
+		this.me = wsdefJavaOf.classUnderSrcMainJava(getClass());
 	}
 
 	@Override
 	protected IngredientsAndParametersDefined ingredientsAndParameters(
 			IngredientsAndParametersPlease iUse) {
 		return iUse.parameter("MAIN_CLASS_NAME", MAIN_CLASS_NAME)
+				.ingredients("me", me)
 				.ingredients("log4jProperties", log4jProperties)
 				.ingredients("runtimeJars", runtimeJars).nothingElse();
 	}

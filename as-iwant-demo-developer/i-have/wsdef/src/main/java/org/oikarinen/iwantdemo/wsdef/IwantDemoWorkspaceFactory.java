@@ -8,7 +8,7 @@ public class IwantDemoWorkspaceFactory implements WorkspaceFactory {
 
 	@Override
 	public Workspace workspace(WorkspaceContext ctx) {
-		return new IwantDemoWorkspace();
+		return new IwantDemoWorkspace(ctx);
 	}
 
 }
