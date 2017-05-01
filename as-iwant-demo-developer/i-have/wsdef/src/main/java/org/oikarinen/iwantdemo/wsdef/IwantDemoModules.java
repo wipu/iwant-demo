@@ -65,18 +65,18 @@ public class IwantDemoModules extends JavaModules {
 	final JavaSrcModule cli;
 
 	IwantDemoModules(WsdefJavaOf wsdefJavaOf) {
-		Path generatedJavabeansJava = new GeneratedJavaBean(
-				"generatedJavabeansJava.java",
+		Path generatedJavaBeansJava = new GeneratedJavaBean(
+				"generatedJavaBeansJava.java",
 				Source.underWsroot("generated-javabeans/beans.txt"),
 				wsdefJavaOf);
-		Path generatedJavabeansClasses = JavaClasses.with()
-				.name("generatedJavabeansJava.classes")
-				.srcDirs(generatedJavabeansJava).end();
-		Path generatedJavabeansJar = Jar.with()
-				.name("generatedJavabeansJava.jar")
-				.classes(generatedJavabeansClasses).end();
-		JavaModule generatedJavabeans = JavaBinModule
-				.providing(generatedJavabeansJar, generatedJavabeansJava).end();
+		Path generatedJavaBeansClasses = JavaClasses.with()
+				.name("generatedJavaBeansJava.classes")
+				.srcDirs(generatedJavaBeansJava).end();
+		Path generatedJavaBeansJar = Jar.with()
+				.name("generatedJavaBeansJava.jar")
+				.classes(generatedJavaBeansClasses).end();
+		JavaModule generatedJavaBeans = JavaBinModule
+				.providing(generatedJavaBeansJar, generatedJavaBeansJava).end();
 		JavaModule mathLib = iwantDemoModule("math-lib").noMainResources()
 				.mainDeps(commonsMath, slf4jApi).testDeps(hamcrestAll, junit)
 				.testRuntimeDeps(slf4jLog4j12).end();
@@ -85,7 +85,7 @@ public class IwantDemoModules extends JavaModules {
 				IwantDemoWorkspaceModuleProvider.javabeanGenerator);
 
 		cli = iwantDemoModule("cli")
-				.mainDeps(commonsCli, generatedJavabeans, mathLib, slf4jApi)
+				.mainDeps(commonsCli, generatedJavaBeans, mathLib, slf4jApi)
 				.mainRuntimeDeps(slf4jLog4j12).testDeps(commonsIo, junit).end();
 
 	}

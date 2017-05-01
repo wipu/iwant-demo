@@ -3,7 +3,7 @@ package org.oikarinen.iwantdemo.wsdef;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
-import org.oikarinen.iwantdemo.javabeangenerator.JavabeanGenerator;
+import org.oikarinen.iwantdemo.javabeangenerator.JavaBeanGenerator;
 
 import net.sf.iwant.api.model.Source;
 import net.sf.iwant.api.model.TargetEvaluationContext;
@@ -29,7 +29,7 @@ public class GeneratedJavaBean extends TargetBase {
 		return iUse.ingredients("me", me)
 				.ingredients("JavabeanGenerator.class",
 						PathToClasspathLocationOf
-								.class_(JavabeanGenerator.class))
+								.class_(JavaBeanGenerator.class))
 				.ingredients("source", source).nothingElse();
 	}
 
@@ -39,7 +39,7 @@ public class GeneratedJavaBean extends TargetBase {
 		System.err.println("Generating " + dest);
 
 		String sourceContent = FileUtils.readFileToString(ctx.cached(source));
-		JavabeanGenerator gen = JavabeanGenerator.fromSource(sourceContent);
+		JavaBeanGenerator gen = JavaBeanGenerator.fromSource(sourceContent);
 
 		File dir = new File(dest, gen.parentDirPath());
 		File file = new File(dir, gen.basename());

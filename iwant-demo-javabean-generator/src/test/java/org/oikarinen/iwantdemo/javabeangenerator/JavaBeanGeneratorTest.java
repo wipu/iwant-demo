@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class JavabeanGeneratorTest {
+public class JavaBeanGeneratorTest {
 
 	@Test
 	public void beanA() throws IOException {
@@ -16,7 +16,7 @@ public class JavabeanGeneratorTest {
 		b.append("String s\n");
 		b.append("int i\n");
 
-		JavabeanGenerator gen = JavabeanGenerator.fromSource(b.toString());
+		JavaBeanGenerator gen = JavaBeanGenerator.fromSource(b.toString());
 
 		assertEquals("beans/a", gen.parentDirPath());
 		assertEquals("BeanA.java", gen.basename());
@@ -36,7 +36,7 @@ public class JavabeanGeneratorTest {
 		b.append("BeanB\n");
 		b.append("double dublo\n");
 
-		JavabeanGenerator gen = JavabeanGenerator.fromSource(b.toString());
+		JavaBeanGenerator gen = JavaBeanGenerator.fromSource(b.toString());
 
 		assertEquals("beans/b", gen.parentDirPath());
 		assertEquals("BeanB.java", gen.basename());

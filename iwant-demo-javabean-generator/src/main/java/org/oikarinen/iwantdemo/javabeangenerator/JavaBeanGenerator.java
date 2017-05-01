@@ -6,13 +6,13 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JavabeanGenerator {
+public class JavaBeanGenerator {
 
 	private final String pak;
 	private final String classname;
 	private final List<String> props = new ArrayList<>();
 
-	public JavabeanGenerator(String src) throws IOException {
+	public JavaBeanGenerator(String src) throws IOException {
 		try (BufferedReader b = new BufferedReader(new StringReader(src))) {
 			pak = b.readLine();
 			classname = b.readLine();
@@ -26,8 +26,8 @@ public class JavabeanGenerator {
 		}
 	}
 
-	public static JavabeanGenerator fromSource(String src) throws IOException {
-		return new JavabeanGenerator(src);
+	public static JavaBeanGenerator fromSource(String src) throws IOException {
+		return new JavaBeanGenerator(src);
 	}
 
 	public String parentDirPath() {
