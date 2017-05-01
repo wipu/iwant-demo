@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import net.sf.iwant.api.core.TargetBase;
-import net.sf.iwant.api.javamodules.JavaModules;
 import net.sf.iwant.api.javamodules.JavaSrcModule;
 import net.sf.iwant.api.model.Path;
 import net.sf.iwant.api.model.TargetEvaluationContext;
+import net.sf.iwant.api.target.TargetBase;
+import net.sf.iwant.core.javamodules.JavaModules;
 
 public class CliDistro extends TargetBase {
 

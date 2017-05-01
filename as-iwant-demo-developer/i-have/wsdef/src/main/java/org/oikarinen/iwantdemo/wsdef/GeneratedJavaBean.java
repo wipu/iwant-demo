@@ -5,9 +5,9 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.oikarinen.iwantdemo.javabeangenerator.JavabeanGenerator;
 
-import net.sf.iwant.api.core.TargetBase;
 import net.sf.iwant.api.model.Source;
 import net.sf.iwant.api.model.TargetEvaluationContext;
+import net.sf.iwant.api.target.TargetBase;
 
 public class GeneratedJavaBean extends TargetBase {
 

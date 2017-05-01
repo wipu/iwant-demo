@@ -9,12 +9,12 @@ import org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider;
 import net.sf.iwant.api.javamodules.JavaBinModule;
 import net.sf.iwant.api.javamodules.JavaClasses;
 import net.sf.iwant.api.javamodules.JavaModule;
-import net.sf.iwant.api.javamodules.JavaModules;
 import net.sf.iwant.api.javamodules.JavaSrcModule;
 import net.sf.iwant.api.javamodules.JavaSrcModule.IwantSrcModuleSpex;
 import net.sf.iwant.api.model.Path;
 import net.sf.iwant.api.model.Source;
 import net.sf.iwant.api.zip.Jar;
+import net.sf.iwant.core.javamodules.JavaModules;
 
 public class IwantDemoModules extends JavaModules {
 

@@ -40,7 +40,7 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 /**
- * $Id: Iwant.java 844 2016-11-02 20:30:47Z wipu_ $
+ * $Id: Iwant.java 879 2017-04-30 14:28:05Z wipu_ $
  */
 public class Iwant {
 
@@ -370,10 +370,44 @@ public class Iwant {
 		File classes = network.cacheLocation(
 				new UnmodifiableIwantBootstrapperClassesFromIwantWsRoot(
 						iwantEssential));
-		return compiledClasses(classes,
-				iwantBootstrappingJavaSources(iwantEssential),
-				Collections.<File> emptyList(), bootstrappingJavacOptions(),
-				null);
+		List<File> javaSrcs = iwantBootstrappingJavaSources(iwantEssential);
+		if (bootstrapperIngredientsChanged(classes, javaSrcs)) {
+			compiledClasses(classes,
+					iwantBootstrappingJavaSources(iwantEssential),
+					Collections.<File> emptyList(), bootstrappingJavacOptions(),
+					null);
+		}
+		return classes;
+	}
+
+	private static boolean bootstrapperIngredientsChanged(File target,
+			List<File> srcDeps) {
+		if (!target.exists()) {
+			return true;
+		}
+		return isModifiedSince(srcDeps, target.lastModified());
+	}
+
+	public static boolean isModifiedSince(File src, long time) {
+		if (src.lastModified() >= time) {
+			return true;
+		}
+		if (src.isDirectory()) {
+			for (File child : src.listFiles()) {
+				if (isModifiedSince(child, time)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static boolean isModifiedSince(List<File> srcs, long time) {
+		for (File src : srcs) {
+			if (isModifiedSince(src, time))
+				return true;
+		}
+		return false;
 	}
 
 	public static List<String> bootstrappingJavacOptions() {
