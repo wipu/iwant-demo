@@ -1,5 +1,5 @@
 # iwant-demo
-A project that demonstrates features of the [iwant](http://iwant.sourceforge.net) build system
+A multi-module project that demonstrates features of the [iwant](http://iwant.sourceforge.net) build system
 
 ## Quick start: Studying the code with Eclipse
 
