@@ -13,6 +13,8 @@ As this is the first wish, it forces the iwant bootstrapper to bootstrap iwant a
 
     as-iwant-demo-developer/with/bash/iwant/side-effect/eclipse-settings/effective
 
+_Note that we have to start with an exceptional way of using iwant: we wished for a side-effect, a *mutation to the system*. Most of the time we wish for targets instead, but since Eclipse dictates the location of its settings files and owns them, we have to be imperative here._
+
 Now that you have the Eclipse settings generated, you can import the projects to Eclipse. (Don't copy them to the workspace, just import.)
 
 Modules `iwant-demo-wsdef` and `iwant-demo-wsdefdef` define the build, and the rest of the modules are production modules. Your first entrypoint to the build is [`IwantDemoWorkspaceModuleProvider.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdefdef/src/main/java/org/oikarinen/iwantdemo/wsdefdef/IwantDemoWorkspaceModuleProvider.java). (Use shift-ctrl-T to open it with Eclipse.) It defines the actual build module. The entrypoint to the build, defined as string here, is [`IwantDemoWorkspaceFactory.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoWorkspaceFactory.java). From that you can navigate your way with ctrl-click.
