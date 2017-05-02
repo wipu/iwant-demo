@@ -3,7 +3,7 @@ A multi-module project that demonstrates features of the [iwant](http://iwant.so
 
 ## Quick start: Studying the code with Eclipse
 
-After cloning this repository, cd to it and type your first wish to shell (remember that tab is your friend - oh, and you are expected to have bash and other standard unix tools in your path):
+After cloning this repository, cd to it and type your first wish to shell (remember that tab is your friend - oh, and you are expected to have bash and other standard unix tools in your path, as well as a Java SDK):
 
     as-iwant-demo-developer/with/bash/iwant/help.sh
 
