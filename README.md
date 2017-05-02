@@ -25,7 +25,7 @@ When you have finished your initial study of the code you can make your next wis
 
     as-iwant-demo-developer/with/bash/iwant/target/jacoco-report-all/as-path | xargs -r -Ixxx chrome xxx/index.html
 
-_Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching anything._
+_Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching anything. Even the methods of [`IwantDemoWorkspace.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoWorkspace.java) that define the target, `jacocoReportAll` and  `jacocoReport`, don't mention anything imperative like running tests but just define nouns related to the report you are after._
 
 _Also note how all progress output of refreshing a target is printed to stderr, not stdout, so the output of the wish, the __path__ of the target, is the only thing that goes to the next process in the pipeline - xargs and chrome in this case._
 
