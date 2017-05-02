@@ -54,11 +54,11 @@ The code generator [`JavaBeanGenerator.java`](https://github.com/wipu/iwant-demo
 
 ## Cache validity of a custom target
 
-Note how [`GeneratedJavaBean.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/GeneratedJavaBean.java) declares the ingredients it needs for generating the the java files. It not only declares the source file it consumes as ingredients, but also its own java file and the classpath location that contains the code generator, `JavaBeanGenerator.class`.
+Note how [`GeneratedJavaBean.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/GeneratedJavaBean.java) declares the ingredients it needs for generating the the java files. It not only declares the [source file](https://github.com/wipu/iwant-demo/blob/master/generated-javabeans/beans.txt) it consumes as ingredients, but also its own java file and the classpath location that contains the code generator, `JavaBeanGenerator.class`.
 
 This makes sure the target will be refreshed if you touch any of the declared ingredients.
 
-Try this by how touching `generated-javabeans/beans.txt`, [`GeneratedJavaBean.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/GeneratedJavaBean.java) or [`JavaBeanGenerator.java`](https://github.com/wipu/iwant-demo/blob/master/iwant-demo-javabean-generator/src/main/java/org/oikarinen/iwantdemo/javabeangenerator/JavaBeanGenerator.java) causes a refresh of the target `generatedJavaBeansJava.classes` when requesting for example for target `cli-distro`.
+Try this by how touching [`generated-javabeans/beans.txt`](https://github.com/wipu/iwant-demo/blob/master/generated-javabeans/beans.txt), [`GeneratedJavaBean.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/GeneratedJavaBean.java) or [`JavaBeanGenerator.java`](https://github.com/wipu/iwant-demo/blob/master/iwant-demo-javabean-generator/src/main/java/org/oikarinen/iwantdemo/javabeangenerator/JavaBeanGenerator.java) causes a refresh of the target `generatedJavaBeansJava.classes` when requesting for example for target `cli-distro`.
 
 _Also note how the target is *not* refreshed if none of its ingredients has changed._
 
