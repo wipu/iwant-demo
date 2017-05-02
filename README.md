@@ -13,7 +13,7 @@ As this is the first wish, it forces the iwant bootstrapper to bootstrap iwant a
 
     as-iwant-demo-developer/with/bash/iwant/side-effect/eclipse-settings/effective
 
-_Note that we have to start with an exceptional way of using iwant: we wished for a side-effect, a *mutation to the system*. Most of the time we wish for targets instead, but since Eclipse dictates the location of its settings files and owns them, we have to be imperative here._
+_Note that we have to start with an exceptional way of using iwant: we wished for a side-effect, a __mutation to the system__. Most of the time we wish for targets instead, but since Eclipse dictates the location of its settings files and owns them, we have to be imperative here._
 
 Now that you have the Eclipse settings generated, you can import the projects to Eclipse. (Don't copy them to the workspace, just import.)
 
