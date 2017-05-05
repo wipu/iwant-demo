@@ -25,6 +25,10 @@ _Note how you can study how the build is defined by utilizing the Java type syst
 
 When you have finished your initial study of the code you can make your next wish to get a test coverage report and pipe it to a browser:
 
+    as-iwant-demo-developer/with/bash/iwant/target/jacoco-report-all/as-path | xargs -r chrome
+
+Or, if you prefer fancier use of `xargs`, open the browser directly to the correct file:
+
     as-iwant-demo-developer/with/bash/iwant/target/jacoco-report-all/as-path | xargs -r -Ixxx chrome xxx/index.html
 
 _Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching anything. Even the methods of [`IwantDemoWorkspace.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoWorkspace.java) that define the target, `jacocoReportAll` and  `jacocoReport`, don't mention anything imperative like running tests but just define nouns related to the report you are after._
