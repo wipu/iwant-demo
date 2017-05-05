@@ -1,5 +1,5 @@
 # iwant-demo
-A multi-module project that demonstrates features of the [iwant](http://iwant.sourceforge.net) build system
+A multi-module project that demonstrates features of the [`iwant`](http://iwant.sourceforge.net) build system
 
 ## Quick start: Studying the code with Eclipse
 
@@ -7,13 +7,13 @@ After cloning this repository, cd to it and type your first wish to shell (remem
 
     as-iwant-demo-developer/with/bash/iwant/help.sh
 
-_Note how you don't need to install or configure anything. A small amount of bootstrapping code will ensure you have the correct version of iwant serving your build wishes._
+_Note how you don't need to install or configure anything. A small amount of bootstrapping code will ensure you have the correct version of [`iwant`](http://iwant.sourceforge.net) serving your build wishes._
 
-As this is the first wish, it forces the iwant bootstrapper to bootstrap iwant and generate more wishes. Use tab again and issue the next wish:
+As this is the first wish, it forces the [`iwant`](http://iwant.sourceforge.net) bootstrapper to bootstrap [`iwant`](http://iwant.sourceforge.net) and generate more wishes. Use tab again and issue the next wish:
 
     as-iwant-demo-developer/with/bash/iwant/side-effect/eclipse-settings/effective
 
-_Note that we have to start with an exceptional way of using iwant: we wished for a side-effect, a __mutation to the system__. Most of the time we wish for targets instead, but since Eclipse dictates the location of its settings files and owns them, we have to be imperative here._
+_Note that we have to start with an exceptional way of using [`iwant`](http://iwant.sourceforge.net): we wished for a side-effect, a __mutation to the system__. Most of the time we wish for targets instead, but since Eclipse dictates the location of its settings files and owns them, we have to be imperative here._
 
 Now that you have the Eclipse settings generated, you can import the projects to Eclipse. (Don't copy them to the workspace, just import.)
 
@@ -31,7 +31,7 @@ Or, if you prefer fancier use of `xargs`, open the browser directly to the corre
 
     as-iwant-demo-developer/with/bash/iwant/target/jacoco-report-all/as-path | xargs -r -Ixxx chrome xxx/index.html
 
-_Note how you didn't tell iwant to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching anything. Even the methods of [`IwantDemoWorkspace.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoWorkspace.java) that define the target, `jacocoReportAll` and  `jacocoReport`, don't mention anything imperative like running tests but just define nouns related to the report you are after._
+_Note how you didn't tell [`iwant`](http://iwant.sourceforge.net) to run tests. In fact, if you run the command again, it __wont' run them__ because you didn't change the code coverage by touching anything. Even the methods of [`IwantDemoWorkspace.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoWorkspace.java) that define the target, `jacocoReportAll` and  `jacocoReport`, don't mention anything imperative like running tests but just define nouns related to the report you are after._
 
 _Also note how all progress output of refreshing a target is printed to stderr, not stdout, so the output of the wish, the __path__ of the target, is the only thing that goes to the next process in the pipeline - xargs and chrome in this case._
 
@@ -76,6 +76,6 @@ You can get a findbugs report by running:
 
 ## More?
 
-There is a lot more you can do with iwant. Why don't you tell me what you want demonstrated next? Maybe challenge iwant with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.
+There is a lot more you can do with [`iwant`](http://iwant.sourceforge.net). Why don't you tell me what you want demonstrated next? Maybe challenge [`iwant`](http://iwant.sourceforge.net) with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.
 
-- Ville Oikarinen (author of iwant)
+_- Ville Oikarinen (author of [`iwant`](http://iwant.sourceforge.net))_
