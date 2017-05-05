@@ -72,6 +72,6 @@ You can get a findbugs report by running:
 
 ## More?
 
-There is a lot more you can do with iwant. Why don't you tell me what you want demonstrated next? Maybe challenge iwant with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or clone this project and do it yourself! Don't hesitate to ask for help.
+There is a lot more you can do with iwant. Why don't you tell me what you want demonstrated next? Maybe challenge iwant with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.
 
 - Ville Oikarinen (author of iwant)
