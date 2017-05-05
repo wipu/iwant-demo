@@ -70,3 +70,8 @@ You can get a findbugs report by running:
 
     as-iwant-demo-developer/with/bash/iwant/target/findbugs-report/as-path | xargs -r -Ixxx chrome xxx/findbugs-report/findbugs-report.html
 
+## More?
+
+There is a lot more you can do with iwant. Why don't you tell me what you want demonstrated next? Maybe challenge iwant with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or clone this project and do it yourself! Don't hesitate to ask for help.
+
+- Ville Oikarinen (author of iwant)
