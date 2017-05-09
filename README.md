@@ -87,7 +87,7 @@ _Note how easily you can enforce a zero tolerance of warnings even in a project 
 
 [`joulu unsigned-byte`](https://github.com/wipu/joulu/tree/master/unsigned-byte) is a simple depencencyless module. The method `jouluUnsignedByte` of [`IwantDemoModules.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoModules.java) defines it as a java binary module compiled from sources downloaded from github.
 
-To use it run
+To use it from the cli run
 
     as-iwant-demo-developer/with/bash/iwant/target/cli-distro/as-path && as-iwant-demo-developer/.i-cached/target/cli-distro/run.sh -u 3
 
