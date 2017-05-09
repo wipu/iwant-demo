@@ -16,6 +16,8 @@ import org.oikarinen.iwantdemo.mathlib.Mathlib;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import joulu.unsignedbyte.UnsignedByte;
+
 public class IwantDemoCli {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -50,6 +52,12 @@ public class IwantDemoCli {
 		generatedBean.setArgName("sValue");
 		o.addOption(generatedBean);
 
+		Option unsignedByte = new Option("u", "unsigned-byte", true,
+				"use joulu-unsigned-byte to convert <int> to"
+						+ " unsigned byte and display information");
+		unsignedByte.setArgName("int");
+		o.addOption(unsignedByte);
+
 		CommandLineParser parser = new DefaultParser();
 
 		CommandLine cmd;
@@ -73,8 +81,22 @@ public class IwantDemoCli {
 			useGeneratedBean(v);
 			return;
 		}
+		if (cmd.hasOption(unsignedByte.getOpt())) {
+			int value = Integer
+					.parseInt(cmd.getOptionValue(unsignedByte.getOpt()));
+			useJouluUnsignedByte(value);
+			return;
+		}
 		showHelpAndExit(o);
 		return;
+	}
+
+	private void useJouluUnsignedByte(int value) {
+		out.println("Integer " + value + " as unsigned byte 'b'");
+		UnsignedByte b = UnsignedByte.from(value);
+		out.println("b: " + b);
+		out.println("b.not(): " + b.not());
+		out.println("b.isBit0(): " + b.isBit0());
 	}
 
 	private void useGeneratedBean(String v) {

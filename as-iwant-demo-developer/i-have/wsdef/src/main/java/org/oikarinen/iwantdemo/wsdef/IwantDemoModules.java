@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider;
 
+import net.sf.iwant.api.core.SubPath;
 import net.sf.iwant.api.javamodules.JavaBinModule;
 import net.sf.iwant.api.javamodules.JavaClasses;
 import net.sf.iwant.api.javamodules.JavaModule;
@@ -16,6 +17,7 @@ import net.sf.iwant.api.model.Source;
 import net.sf.iwant.api.zip.Jar;
 import net.sf.iwant.core.javafinder.WsdefJavaOf;
 import net.sf.iwant.core.javamodules.JavaModules;
+import net.sf.iwant.plugin.github.FromGithub;
 
 public class IwantDemoModules extends JavaModules {
 
@@ -39,6 +41,20 @@ public class IwantDemoModules extends JavaModules {
 	 */
 	private final JavaModule hamcrestAll = binModule("org.hamcrest",
 			"hamcrest-all", HAMCREST_VER);
+
+	private final Path joulu = FromGithub.user("wipu").project("joulu")
+			.commit("1e913b69b31b145cebf89f5e7821060ddecc8f38");
+
+	private JavaBinModule jouluUnsignedByte() {
+		Path java = new SubPath("joulu-unsigned-byte-java", joulu,
+				"unsigned-byte/src/main/java");
+		Path classes = JavaClasses.with().name("joulu-unsigned-byte-classes")
+				.srcDirs(java).end();
+		Path jar = Jar.with().name("joulu-unsigned-byte.jar").classes(classes)
+				.end();
+
+		return JavaBinModule.providing(jar, java).end();
+	}
 
 	private final JavaModule junit = IwantDemoWorkspaceModuleProvider.junit;
 
@@ -90,8 +106,8 @@ public class IwantDemoModules extends JavaModules {
 				IwantDemoWorkspaceModuleProvider.javabeanGenerator);
 
 		cli = iwantDemoModule("cli")
-				.mainDeps(commonsCli, generatedJavaBeans, mathLib, slf4jApi,
-						sloppyLegacy)
+				.mainDeps(commonsCli, generatedJavaBeans, jouluUnsignedByte(),
+						mathLib, slf4jApi, sloppyLegacy)
 				.mainRuntimeDeps(slf4jLog4j12).testDeps(commonsIo, junit).end();
 
 	}

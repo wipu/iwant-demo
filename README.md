@@ -83,6 +83,16 @@ The module `iwant-demo-sloppy-legacy` uses exceptional code formatting and style
 
 _Note how easily you can enforce a zero tolerance of warnings even in a project with below-standard legacy code by relaxing opinionated default settings where needed._
 
+## Simple module compiled from sources from github
+
+[`joulu unsigned-byte`](https://github.com/wipu/joulu/tree/master/unsigned-byte) is a simple depencencyless module. The method `jouluUnsignedByte` of [`IwantDemoModules.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoModules.java) defines it as a java binary module compiled from sources downloaded from github.
+
+To use it run
+
+    as-iwant-demo-developer/with/bash/iwant/target/cli-distro/as-path && as-iwant-demo-developer/.i-cached/target/cli-distro/run.sh -u 3
+
+_Note how easy and natural it is to reuse code that hasn't even been "officially" published to a [(maven)](https://mvnrepository.com/) binary repository._
+
 ## More?
 
 There is a lot more you can do with [`iwant`](http://iwant.sourceforge.net). Why don't you tell me what you want demonstrated next? Maybe challenge [`iwant`](http://iwant.sourceforge.net) with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.

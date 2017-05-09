@@ -38,6 +38,7 @@ public class IwantDemoWorkspaceModuleProvider
 				.mainJava("src/main/java").mainDeps(ctx.iwantApiModules())
 				.mainDeps(ctx.wsdefdefModule(), javabeanGenerator)
 				.mainDeps(ctx.iwantPlugin().findbugs().withDependencies())
+				.mainDeps(ctx.iwantPlugin().github().withDependencies())
 				.mainDeps(ctx.iwantPlugin().jacoco().withDependencies()).end();
 	}
 
