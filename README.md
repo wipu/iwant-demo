@@ -97,4 +97,6 @@ _Note how easy and natural it is to reuse code that hasn't even been "officially
 
 There is a lot more you can do with [`iwant`](http://iwant.sourceforge.net). Why don't you tell me what you want demonstrated next? Maybe challenge [`iwant`](http://iwant.sourceforge.net) with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.
 
-_- Ville Oikarinen (author of [`iwant`](http://iwant.sourceforge.net))_
+_- Ville Oikarinen (firstname at lastname dot org)_
+
+_(author of [`iwant`](http://iwant.sourceforge.net))_
