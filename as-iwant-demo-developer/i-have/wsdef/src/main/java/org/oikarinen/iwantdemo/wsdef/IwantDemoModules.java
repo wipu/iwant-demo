@@ -80,12 +80,18 @@ public class IwantDemoModules extends JavaModules {
 		JavaModule mathLib = iwantDemoModule("math-lib").noMainResources()
 				.mainDeps(commonsMath, slf4jApi).testDeps(hamcrestAll, junit)
 				.testRuntimeDeps(slf4jLog4j12).end();
+		JavaModule sloppyLegacy = iwantDemoModule("sloppy-legacy")
+				.codeStyle(IwantDemoCodeStyles.LEGACY)
+				.codeFormatter(IwantDemoCodeStyles.legacyEclipseFormatting())
+				.noMainResources().noTestJava().noTestResources().mainDeps()
+				.end();
 
 		javabeanGenerator = buildTimeModule(
 				IwantDemoWorkspaceModuleProvider.javabeanGenerator);
 
 		cli = iwantDemoModule("cli")
-				.mainDeps(commonsCli, generatedJavaBeans, mathLib, slf4jApi)
+				.mainDeps(commonsCli, generatedJavaBeans, mathLib, slf4jApi,
+						sloppyLegacy)
 				.mainRuntimeDeps(slf4jLog4j12).testDeps(commonsIo, junit).end();
 
 	}
@@ -108,15 +114,25 @@ public class IwantDemoModules extends JavaModules {
 		return module;
 	}
 
-	/**
-	 * The first test dep provides our own log4j properties so they will be used
-	 * even if some other dependency contains them.
-	 * 
-	 * It's ok to define this even for modules that don't have tests.
-	 */
 	@Override
 	protected IwantSrcModuleSpex commonSettings(IwantSrcModuleSpex m) {
-		return super.commonSettings(m).testDeps(testLog4jProperties);
+		IwantSrcModuleSpex cs = super.commonSettings(m);
+
+		/*
+		 * The first test dep provides our own log4j properties so they will be
+		 * used even if some other dependency contains them.
+		 * 
+		 * It's ok to define this even for modules that don't have tests.
+		 */
+		cs.testDeps(testLog4jProperties);
+
+		/*
+		 * This is optional: we have a slightly modified code style in this
+		 * project.
+		 */
+		cs.codeStyle(IwantDemoCodeStyles.COMMON);
+
+		return cs;
 	}
 
 	/**

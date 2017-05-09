@@ -74,6 +74,15 @@ You can get a findbugs report by running:
 
     as-iwant-demo-developer/with/bash/iwant/target/findbugs-report/as-path | xargs -r -Ixxx chrome xxx/findbugs-report/findbugs-report.html
 
+## Code style and formatting
+
+The project demonstrates customizing the code style policy for its modules in
+[`IwantDemoModules.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoModules.java) method `commonSettings`. The policies are defined in [`IwantDemoCodeStyles.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/IwantDemoCodeStyles.java).
+
+The module `iwant-demo-sloppy-legacy` uses exceptional code formatting and style settings.
+
+_Note how easily you can enforce a zero tolerance of warnings even in a project with below-standard legacy code by relaxing opinionated default settings where needed._
+
 ## More?
 
 There is a lot more you can do with [`iwant`](http://iwant.sourceforge.net). Why don't you tell me what you want demonstrated next? Maybe challenge [`iwant`](http://iwant.sourceforge.net) with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.
