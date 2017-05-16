@@ -93,6 +93,22 @@ To use it from the cli run
 
 _Note how easy and natural it is to reuse code that hasn't even been "officially" published to a [(maven)](https://mvnrepository.com/) binary repository._
 
+## Case: gcc, static and dynamic linking, code generation (Anteru's build-systems example)
+
+Anteru compares several build systems in his [Build systems blog](https://anteru.net/blog/2017/build-systems-intro/index.html). He hosts the [example project at bitbucket](https://bitbucket.org/Anteru/build-systems).
+
+To be honest [`iwant`](http://iwant.sourceforge.net) is heavy for very simple (non-java) projects, because it requires some bootstrapping overhead (the wsdefdef and wsdef java modules) and the virtually unvoidable need to have a heavy IDE running for editing the build.
+
+But as [`AnteruBuildSystemsExample.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/AnteruBuildSystemsExample.java) demonstrates, the actual target definitions of Anteru's example project are reasonably dry. (And the bigger the project, the drier it can be made with the power of Java and object oriented programming.)
+
+To try out the example executable run
+
+    as-iwant-demo-developer/with/bash/iwant/target/anteru-build-systems-example/as-path && as-iwant-demo-developer/.i-cached/target/anteru-build-systems-example/run.sh
+
+_Note how the target is refreshed even when you make a trivial change to any shell command that defines a target. Even GNU make that otherwise is a very fine example of a declarative lazy build system falls for [cache invalidation](https://martinfowler.com/bliki/TwoHardThings.html) here._
+
+_Also note how easy it is to not only define parts of the application but also a full distribution directory with a run script._
+
 ## More?
 
 There is a lot more you can do with [`iwant`](http://iwant.sourceforge.net). Why don't you tell me what you want demonstrated next? Maybe challenge [`iwant`](http://iwant.sourceforge.net) with something that is especially difficult for other build systems. Or especially easy for them, for comparison. Or fork this project and do it yourself! Don't hesitate to ask for help.

@@ -45,6 +45,7 @@ public class IwantDemoWorkspace implements Workspace {
 				wsdefJavaOf));
 		t.add(findbugsReport());
 		t.add(jacocoReportAll());
+		t.add(AnteruBuildSystemsExample.distro());
 		return t;
 	}
 
