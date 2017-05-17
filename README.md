@@ -97,7 +97,7 @@ _Note how easy and natural it is to reuse code that hasn't even been "officially
 
 Anteru compares several build systems in his [Build systems blog](https://anteru.net/blog/2017/build-systems-intro/index.html). He hosts the [example project at bitbucket](https://bitbucket.org/Anteru/build-systems).
 
-To be honest [`iwant`](http://iwant.sourceforge.net) is heavy for very simple (non-java) projects, because it requires some bootstrapping overhead (the wsdefdef and wsdef java modules) and the virtually unvoidable need to have a heavy IDE running for editing the build.
+To be honest [`iwant`](http://iwant.sourceforge.net) is heavy for very simple (non-java) projects, because it requires some bootstrapping overhead (the wsdefdef and wsdef java modules) and, in practice, a heavy IDE for editing the build.
 
 But as [`AnteruBuildSystemsExample.java`](https://github.com/wipu/iwant-demo/blob/master/as-iwant-demo-developer/i-have/wsdef/src/main/java/org/oikarinen/iwantdemo/wsdef/AnteruBuildSystemsExample.java) demonstrates, the actual target definitions of Anteru's example project are reasonably dry. (And the bigger the project, the drier it can be made with the power of Java and object oriented programming.)
 
