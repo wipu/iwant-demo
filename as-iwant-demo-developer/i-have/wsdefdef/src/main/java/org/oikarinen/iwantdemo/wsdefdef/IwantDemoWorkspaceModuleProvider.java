@@ -5,10 +5,9 @@ import net.sf.iwant.api.javamodules.JavaCompliance;
 import net.sf.iwant.api.javamodules.JavaModule;
 import net.sf.iwant.api.javamodules.JavaSrcModule;
 import net.sf.iwant.api.javamodules.JavaSrcModule.IwantSrcModuleSpex;
-import net.sf.iwant.api.model.Path;
 import net.sf.iwant.api.wsdef.WorkspaceModuleContext;
 import net.sf.iwant.api.wsdef.WorkspaceModuleProvider;
-import net.sf.iwant.core.download.FromRepository;
+import net.sf.iwant.core.javamodules.JavaModules;
 
 public class IwantDemoWorkspaceModuleProvider
 		implements WorkspaceModuleProvider {
@@ -56,15 +55,7 @@ public class IwantDemoWorkspaceModuleProvider
 
 	private static JavaBinModule binModule(String group, String name,
 			String version, JavaModule... runtimeDeps) {
-		Path jar = FromRepository.repo1MavenOrg().group(group).name(name)
-				.version(version);
-		return binModule(jar, runtimeDeps);
-	}
-
-	private static JavaBinModule binModule(Path mainArtifact,
-			JavaModule... runtimeDeps) {
-		return JavaBinModule.providing(mainArtifact).runtimeDeps(runtimeDeps)
-				.end();
+		return JavaModules.binModule(group, name, version, runtimeDeps);
 	}
 
 }
