@@ -1,16 +1,28 @@
 #!/bin/bash
-
-REV=894
-
 set -eu
+
+COMMIT=0b77c93c69797fcc6aeb44844a2aa8c6f08f331d
+GITHUBUSER=wipu
+URL=https://raw.githubusercontent.com/$GITHUBUSER/iwant/$COMMIT
 
 HERE=$(dirname "$0")
 cd "$HERE/../../.."
 
-URL=https://svn.code.sf.net/p/iwant/code/trunk
+fetch() {
+    local RELPATH=$1
+    rm -f "$RELPATH"
+    local PARENT=$(dirname "$RELPATH")
+    mkdir -p "$PARENT"
+    cd "$PARENT"
+    wget "$URL/essential/iwant-entry/as-some-developer/$RELPATH"
+    cd -
+}
 
-svn export --force -r "$REV" "$URL/essential/iwant-entry/as-some-developer/with"
+fetch with/ant/iw/build.xml
+fetch with/bash/iwant/help.sh
+chmod u+x with/bash/iwant/help.sh
+fetch with/java/net/sf/iwant/entry/Iwant.java
 
 CONF=i-have/conf
 mkdir -p "$CONF"
-echo "iwant-from=$URL@$REV" > "$CONF/iwant-from"
+echo "iwant-from=https://github.com/$GITHUBUSER/iwant/archive/$COMMIT.zip" > "$CONF/iwant-from"

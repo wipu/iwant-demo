@@ -1,7 +1,5 @@
 <project name="iwant" default="wish" basedir="">
 
-	<!-- $Id: build.xml 804 2015-06-02 05:19:17Z wipu_ $ -->
-
 	<property name="as-someone" location="../../.." />
 	<property name="entry-src" location="${as-someone}/with/java" />
 

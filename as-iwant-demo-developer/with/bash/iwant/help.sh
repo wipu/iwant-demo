@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# $Id: help.sh 804 2015-06-02 05:19:17Z wipu_ $
-
 set -eu
 
 cyg() {
