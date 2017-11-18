@@ -1,12 +1,12 @@
 package org.oikarinen.iwantdemo.wsdef;
 
-import net.sf.iwant.api.core.Concatenated;
-import net.sf.iwant.api.core.Directory;
-import net.sf.iwant.api.core.Directory.DirectoryContentPlease;
-import net.sf.iwant.api.core.ScriptGenerated;
-import net.sf.iwant.api.model.Path;
-import net.sf.iwant.api.model.Source;
-import net.sf.iwant.api.model.Target;
+import org.fluentjava.iwant.api.core.Concatenated;
+import org.fluentjava.iwant.api.core.Directory;
+import org.fluentjava.iwant.api.core.Directory.DirectoryContentPlease;
+import org.fluentjava.iwant.api.core.ScriptGenerated;
+import org.fluentjava.iwant.api.model.Path;
+import org.fluentjava.iwant.api.model.Source;
+import org.fluentjava.iwant.api.model.Target;
 
 /**
  * This example is copied from https://bitbucket.org/Anteru/build-systems that

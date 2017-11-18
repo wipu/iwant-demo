@@ -1,4 +1,4 @@
-package net.sf.iwant.entry;
+package org.fluentjava.iwant.entry;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -46,7 +46,8 @@ public class Iwant {
 
 	private static final File HOME = new File(System.getProperty("user.home"));
 
-	public static final File IWANT_USER_DIR = new File(HOME, ".net.sf.iwant");
+	public static final File IWANT_USER_DIR = new File(HOME,
+			".org.fluentjava.iwant");
 
 	public static final String EXAMPLE_COMMIT = "f68535c89288af153156e7ac00e90936dd773712";
 
@@ -71,7 +72,7 @@ public class Iwant {
 	 */
 	public interface IwantNetwork {
 
-		File cacheLocation(UnmodifiableSource<?> src);
+		File cacheOfContentFrom(UnmodifiableSource<?> src);
 
 		JavaCompiler systemJavaCompiler();
 
@@ -190,7 +191,7 @@ public class Iwant {
 	private static class RealIwantNetwork implements IwantNetwork {
 
 		@Override
-		public File cacheLocation(UnmodifiableSource<?> src) {
+		public File cacheOfContentFrom(UnmodifiableSource<?> src) {
 			File cached = new File(IWANT_USER_DIR, "cached");
 			File cachedFromSrc = new File(cached,
 					src.getClass().getSimpleName());
@@ -261,11 +262,11 @@ public class Iwant {
 		iwant2Args[0] = iwantEssential.getCanonicalPath();
 		System.arraycopy(args, 0, iwant2Args, 1, args.length);
 
-		runJavaMain(false, true, "net.sf.iwant.entry2.Iwant2",
+		runJavaMain(false, true, "org.fluentjava.iwant.entry2.Iwant2",
 				Arrays.asList(iwantBootstrapClasses), iwant2Args);
 	}
 
-	public URL wishedIwantRootFromUrl(File asSomeone) {
+	public static URL wishedIwantRootFromUrl(File asSomeone) {
 		return wishedIwantFromProperty(asSomeone, "iwant-from", Iwant::url);
 	}
 
@@ -369,7 +370,7 @@ public class Iwant {
 	}
 
 	private File iwantBootstrapperClasses(File iwantEssential) {
-		File classes = network.cacheLocation(
+		File classes = network.cacheOfContentFrom(
 				new UnmodifiableIwantBootstrapperClassesFromIwantWsRoot(
 						iwantEssential));
 		List<File> javaSrcs = iwantBootstrappingJavaSources(iwantEssential);
@@ -415,11 +416,7 @@ public class Iwant {
 	public static List<String> bootstrappingJavacOptions() {
 		List<String> options = new ArrayList<>();
 		options.addAll(recommendedJavacWarningOptions());
-		// options.add("-source");
-		// options.add("1.7");
 		options.add("-g");
-		// options.add("-bootclasspath");
-		// options.add(System.getProperty("java.home"));
 		return options;
 	}
 
@@ -517,7 +514,7 @@ public class Iwant {
 	public static void log(String task, File target) {
 		StringBuilder b = new StringBuilder();
 		b.append(String.format(":%16s -> ", task));
-		b.append(target.getName());
+		b.append(target);
 		System.err.println(b);
 		fileLog(b.toString());
 	}
@@ -525,9 +522,9 @@ public class Iwant {
 	private static List<File> iwantBootstrappingJavaSources(
 			File iwantEssential) {
 		File iwant2 = new File(iwantEssential,
-				"iwant-entry2/src/main/java/net/sf/iwant/entry2/Iwant2.java");
+				"iwant-entry2/src/main/java/org/fluentjava/iwant/entry2/Iwant2.java");
 		File iwant = new File(iwantEssential,
-				"iwant-entry/as-some-developer/with/java/net/sf/iwant/entry/Iwant.java");
+				"iwant-entry/as-some-developer/with/java/org/fluentjava/iwant/entry/Iwant.java");
 		return Arrays.asList(iwant2, iwant);
 	}
 
@@ -650,7 +647,7 @@ public class Iwant {
 		}
 
 		private static boolean isClassnameToHide(String name) {
-			if (name.startsWith("net.sf.iwant")) {
+			if (name.startsWith("org.fluentjava.iwant")) {
 				return isIwantClassnameToHide(name);
 			}
 			return false;
@@ -753,8 +750,8 @@ public class Iwant {
 				return;
 			}
 			mkdirs(to.getParentFile());
-			debugLog("downloaded", "from " + from);
-			log("downloaded", to);
+			debugLog("Downloading", "from " + from);
+			log("Downloading", to);
 			byte[] bytes = downloadBytes(from);
 			FileOutputStream cachedOut = new FileOutputStream(to);
 			cachedOut.write(bytes);
@@ -767,7 +764,7 @@ public class Iwant {
 	}
 
 	public File downloaded(URL from) {
-		File to = network.cacheLocation(new UnmodifiableUrl(from));
+		File to = network.cacheOfContentFrom(new UnmodifiableUrl(from));
 		downloaded(from, to);
 		return to;
 	}
@@ -834,11 +831,11 @@ public class Iwant {
 
 	public File unmodifiableZipUnzipped(UnmodifiableZip src) {
 		try {
-			File dest = network.cacheLocation(src);
+			File dest = network.cacheOfContentFrom(src);
 			if (dest.exists()) {
 				return dest;
 			}
-			log("unzipped", dest);
+			log("Unzipping", dest);
 			File tmp = new File(dest + ".tmp");
 			del(tmp);
 			mkdirs(tmp);

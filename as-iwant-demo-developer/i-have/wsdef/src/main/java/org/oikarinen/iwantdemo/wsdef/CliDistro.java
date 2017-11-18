@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import net.sf.iwant.api.javamodules.JavaSrcModule;
-import net.sf.iwant.api.model.Path;
-import net.sf.iwant.api.model.Source;
-import net.sf.iwant.api.model.TargetEvaluationContext;
-import net.sf.iwant.api.target.TargetBase;
-import net.sf.iwant.core.javafinder.WsdefJavaOf;
-import net.sf.iwant.core.javamodules.JavaModules;
+import org.fluentjava.iwant.api.javamodules.JavaSrcModule;
+import org.fluentjava.iwant.api.model.Path;
+import org.fluentjava.iwant.api.model.Source;
+import org.fluentjava.iwant.api.model.TargetEvaluationContext;
+import org.fluentjava.iwant.api.target.TargetBase;
+import org.fluentjava.iwant.core.javafinder.WsdefJavaOf;
+import org.fluentjava.iwant.core.javamodules.JavaModules;
 
 public class CliDistro extends TargetBase {
 

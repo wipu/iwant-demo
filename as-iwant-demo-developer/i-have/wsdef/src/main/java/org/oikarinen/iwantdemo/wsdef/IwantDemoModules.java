@@ -6,18 +6,18 @@ import java.util.Set;
 
 import org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider;
 
-import net.sf.iwant.api.core.SubPath;
-import net.sf.iwant.api.javamodules.JavaBinModule;
-import net.sf.iwant.api.javamodules.JavaClasses;
-import net.sf.iwant.api.javamodules.JavaModule;
-import net.sf.iwant.api.javamodules.JavaSrcModule;
-import net.sf.iwant.api.javamodules.JavaSrcModule.IwantSrcModuleSpex;
-import net.sf.iwant.api.model.Path;
-import net.sf.iwant.api.model.Source;
-import net.sf.iwant.api.zip.Jar;
-import net.sf.iwant.core.javafinder.WsdefJavaOf;
-import net.sf.iwant.core.javamodules.JavaModules;
-import net.sf.iwant.plugin.github.FromGithub;
+import org.fluentjava.iwant.api.core.SubPath;
+import org.fluentjava.iwant.api.javamodules.JavaBinModule;
+import org.fluentjava.iwant.api.javamodules.JavaClasses;
+import org.fluentjava.iwant.api.javamodules.JavaModule;
+import org.fluentjava.iwant.api.javamodules.JavaSrcModule;
+import org.fluentjava.iwant.api.javamodules.JavaSrcModule.IwantSrcModuleSpex;
+import org.fluentjava.iwant.api.model.Path;
+import org.fluentjava.iwant.api.model.Source;
+import org.fluentjava.iwant.api.zip.Jar;
+import org.fluentjava.iwant.core.javafinder.WsdefJavaOf;
+import org.fluentjava.iwant.core.javamodules.JavaModules;
+import org.fluentjava.iwant.plugin.github.FromGithub;
 
 public class IwantDemoModules extends JavaModules {
 

@@ -1,10 +1,10 @@
 package org.oikarinen.iwantdemo.wsdef;
 
-import net.sf.iwant.api.javamodules.CodeFormatterPolicy;
-import net.sf.iwant.api.javamodules.CodeFormatterPolicy.TabulationCharValue;
-import net.sf.iwant.api.javamodules.CodeStyle;
-import net.sf.iwant.api.javamodules.CodeStylePolicy;
-import net.sf.iwant.api.javamodules.CodeStylePolicy.CodeStylePolicySpex;
+import org.fluentjava.iwant.api.javamodules.CodeFormatterPolicy;
+import org.fluentjava.iwant.api.javamodules.CodeFormatterPolicy.TabulationCharValue;
+import org.fluentjava.iwant.api.javamodules.CodeStyle;
+import org.fluentjava.iwant.api.javamodules.CodeStylePolicy;
+import org.fluentjava.iwant.api.javamodules.CodeStylePolicy.CodeStylePolicySpex;
 
 class IwantDemoCodeStyles {
 

@@ -22,7 +22,7 @@
 		<sequential>
 			<fail unless="entry-classes" />
 			<fail unless="as-someone" />
-			<java classpath="${entry-classes}" classname="net.sf.iwant.entry.Iwant" failonerror="true" fork="true">
+			<java classpath="${entry-classes}" classname="org.fluentjava.iwant.entry.Iwant" failonerror="true" fork="true">
 				<jvmarg value="-Xmx1024m" />
 				<arg file="${as-someone}" />
 				<wish />

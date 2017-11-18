@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-COMMIT=0b77c93c69797fcc6aeb44844a2aa8c6f08f331d
+COMMIT=5a224adbd36ba9cf1f749cc49af2947cb34c473e
 GITHUBUSER=wipu
 URL=https://raw.githubusercontent.com/$GITHUBUSER/iwant/$COMMIT
 
@@ -21,7 +21,7 @@ fetch() {
 fetch with/ant/iw/build.xml
 fetch with/bash/iwant/help.sh
 chmod u+x with/bash/iwant/help.sh
-fetch with/java/net/sf/iwant/entry/Iwant.java
+fetch with/java/org/fluentjava/iwant/entry/Iwant.java
 
 CONF=i-have/conf
 mkdir -p "$CONF"

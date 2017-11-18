@@ -20,9 +20,9 @@ CACHED=$(cyg "$AS_SOMEONE/.i-cached")
 CLASSES=$CACHED/.internal/entry-classes
 CYG_CLASSES=$(cyg "$CLASSES")
 mkdir -p "$CLASSES"
-CYG_SRC=$(cyg "$AS_SOMEONE/with/java/net/sf/iwant/entry/Iwant.java")
+CYG_SRC=$(cyg "$AS_SOMEONE/with/java/org/fluentjava/iwant/entry/Iwant.java")
 javac -source 1.8 -g -d "$CYG_CLASSES" "$CYG_SRC"
 
 java \
   -Xmx1024m \
-  -cp "$CYG_CLASSES" net.sf.iwant.entry.Iwant "$CYG_AS_SOMEONE" "$@"
+  -cp "$CYG_CLASSES" org.fluentjava.iwant.entry.Iwant "$CYG_AS_SOMEONE" "$@"
