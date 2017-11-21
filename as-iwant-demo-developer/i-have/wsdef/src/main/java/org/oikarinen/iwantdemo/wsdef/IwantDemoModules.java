@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider;
-
 import org.fluentjava.iwant.api.core.SubPath;
 import org.fluentjava.iwant.api.javamodules.JavaBinModule;
 import org.fluentjava.iwant.api.javamodules.JavaClasses;
@@ -18,6 +16,7 @@ import org.fluentjava.iwant.api.zip.Jar;
 import org.fluentjava.iwant.core.javafinder.WsdefJavaOf;
 import org.fluentjava.iwant.core.javamodules.JavaModules;
 import org.fluentjava.iwant.plugin.github.FromGithub;
+import org.oikarinen.iwantdemo.wsdefdef.IwantDemoWorkspaceModuleProvider;
 
 public class IwantDemoModules extends JavaModules {
 

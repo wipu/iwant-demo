@@ -3,13 +3,12 @@ package org.oikarinen.iwantdemo.wsdef;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
-import org.oikarinen.iwantdemo.javabeangenerator.JavaBeanGenerator;
-
 import org.fluentjava.iwant.api.model.Source;
 import org.fluentjava.iwant.api.model.TargetEvaluationContext;
 import org.fluentjava.iwant.api.target.TargetBase;
 import org.fluentjava.iwant.core.javafinder.PathToClasspathLocationOf;
 import org.fluentjava.iwant.core.javafinder.WsdefJavaOf;
+import org.oikarinen.iwantdemo.javabeangenerator.JavaBeanGenerator;
 
 public class GeneratedJavaBean extends TargetBase {
 
