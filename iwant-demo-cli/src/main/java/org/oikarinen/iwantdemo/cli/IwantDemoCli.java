@@ -11,12 +11,11 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.fluentjava.joulu.unsignedbyte.UnsignedByte;
 import org.oikarinen.generatedbeans.a.GeneratedBean;
 import org.oikarinen.iwantdemo.mathlib.Mathlib;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import joulu.unsignedbyte.UnsignedByte;
 
 public class IwantDemoCli {
 

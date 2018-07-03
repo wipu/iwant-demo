@@ -42,7 +42,7 @@ public class IwantDemoModules extends JavaModules {
 			"hamcrest-all", HAMCREST_VER);
 
 	private final Path joulu = FromGithub.user("wipu").project("joulu")
-			.commit("1e913b69b31b145cebf89f5e7821060ddecc8f38");
+			.commit("8e343a70d8b22e1bb9e7376762ee15ea9b401164");
 
 	private JavaBinModule jouluUnsignedByte() {
 		Path java = new SubPath("joulu-unsigned-byte-java", joulu,
