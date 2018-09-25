@@ -22,8 +22,6 @@ public class IwantDemoModules extends JavaModules {
 
 	// 3rd party binaries
 
-	final JavaBinModule asmAll = binModule("org.ow2.asm", "asm-all", "5.0.1");
-
 	private final JavaModule commonsCli = binModule("commons-cli",
 			"commons-cli", "1.4");
 

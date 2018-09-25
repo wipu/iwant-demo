@@ -30,8 +30,7 @@ public class IwantDemoWorkspace implements Workspace {
 	private final IwantDemoModules modules;
 	private final Path mainLog4jProperties = Source.underWsroot(
 			"common-resources/main-log4j-properties/log4j.properties");
-	private final FindbugsDistribution findbugs = FindbugsDistribution
-			.ofVersion("3.0.1");
+	private final FindbugsDistribution findbugs = FindbugsDistribution._3_0_1;
 
 	public IwantDemoWorkspace(WorkspaceContext ctx) {
 		this.wsdefJavaOf = new WsdefJavaOf(ctx);
@@ -61,10 +60,9 @@ public class IwantDemoWorkspace implements Workspace {
 		return jacocoReport("jacoco-report-all", modules.allSrcModules());
 	}
 
-	private Target jacocoReport(String name,
+	private static Target jacocoReport(String name,
 			SortedSet<JavaSrcModule> interestingModules) {
-		return JacocoTargetsOfJavaModules.with()
-				.jacocoWithDeps(jacoco(), modules.asmAll.mainArtifact())
+		return JacocoTargetsOfJavaModules.with().jacoco(jacoco())
 				.antJars(TestedIwantDependencies.antJar(),
 						TestedIwantDependencies.antLauncherJar())
 				.modules(interestingModules).end().jacocoReport(name);
