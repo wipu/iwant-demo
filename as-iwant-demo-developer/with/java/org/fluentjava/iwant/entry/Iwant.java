@@ -20,6 +20,7 @@ import java.net.URLClassLoader;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.Permission;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -378,7 +379,7 @@ public class Iwant {
 			compiledClasses(classes,
 					iwantBootstrappingJavaSources(iwantEssential),
 					Collections.<File> emptyList(), bootstrappingJavacOptions(),
-					null);
+					StandardCharsets.UTF_8);
 		}
 		return classes;
 	}
@@ -474,6 +475,8 @@ public class Iwant {
 			options.add(dest.getCanonicalPath());
 			options.add("-classpath");
 			options.add(classpath);
+			options.add("-encoding");
+			options.add(encoding.toString());
 
 			CompilationTask compilerTask = compiler.getTask(compilerTaskOut,
 					fileManager, diagnosticListener, options, classes,
@@ -704,7 +707,11 @@ public class Iwant {
 	private static final String encQuestion = urlEncode("?");
 
 	public static String toSafeFilename(String from) {
-		String to = urlEncode(from);
+		// first make sure we talk unix separators here
+		String to = from.replaceAll(fileSeparatorRegex(), "/");
+
+		// then the mangling
+		to = urlEncode(to);
 		to = to.replaceAll(encSlash, "/");
 		// starting slash
 		to = to.replaceAll("^/", encSlash);
@@ -715,7 +722,15 @@ public class Iwant {
 		to = to.replaceAll("//", "/" + encSlash);
 		// url query
 		to = to.replaceAll(encQuestion, "?");
+
+		// finally convert back to Windows, if that's the case
+		to = to.replaceAll("/", fileSeparatorRegex());
 		return to;
+	}
+
+	private static String fileSeparatorRegex() {
+		String sep = System.getProperty("file.separator");
+		return "\\".equals(sep) ? "\\\\" : sep;
 	}
 
 	private static String urlEncode(String s) {

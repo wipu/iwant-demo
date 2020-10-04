@@ -23,7 +23,7 @@
 			<fail unless="entry-classes" />
 			<fail unless="as-someone" />
 			<java classpath="${entry-classes}" classname="org.fluentjava.iwant.entry.Iwant" failonerror="true" fork="true">
-				<jvmarg value="-Xmx1024m" />
+				<jvmarg value="-Xmx3G" />
 				<arg file="${as-someone}" />
 				<wish />
 			</java>
@@ -33,7 +33,7 @@
 	<target name="entry-classes">
 		<property name="entry-classes" location="${as-someone}/.i-cached/entry-classes" />
 		<mkdir dir="${entry-classes}" />
-		<javac debug="true" destdir="${entry-classes}" encoding="UTF-8" includeantruntime="false" source="1.8" srcdir="${entry-src}" />
+		<javac debug="true" destdir="${entry-classes}" encoding="UTF-8" includeantruntime="false" source="11" srcdir="${entry-src}" />
 	</target>
 
 </project>
