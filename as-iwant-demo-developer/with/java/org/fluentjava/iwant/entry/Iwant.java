@@ -394,6 +394,7 @@ public class Iwant {
 
 	public static boolean isModifiedSince(File src, long time) {
 		if (src.lastModified() >= time) {
+			fileLog(src + " was modified since " + new Date(time));
 			return true;
 		}
 		if (src.isDirectory()) {
