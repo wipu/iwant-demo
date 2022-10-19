@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 public class IwantDemoCli {
 
-	private static final Logger LOGGER = LoggerFactory
+	private static final Logger LOG = LoggerFactory
 			.getLogger(IwantDemoCli.class);
 
 	private final PrintStream out;
@@ -29,7 +29,7 @@ public class IwantDemoCli {
 	}
 
 	public static void main(String[] args) {
-		LOGGER.info("Running " + IwantDemoCli.class + " with args "
+		LOG.info("Running " + IwantDemoCli.class + " with args "
 				+ Arrays.toString(args));
 		new IwantDemoCli(System.out).doMain(args);
 	}

@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 
 public class Mathlib {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Mathlib.class);
+	private static final Logger LOG = LoggerFactory.getLogger(Mathlib.class);
 
 	public static List<Integer> firstNPrimes(int count) {
-		LOGGER.debug("Calculating first {} primes", count);
+		LOG.debug("Calculating first {} primes", count);
 		List<Integer> primes = new ArrayList<>(count);
 		int prime = 2;
 		for (int i = 0; i < count; i++) {
