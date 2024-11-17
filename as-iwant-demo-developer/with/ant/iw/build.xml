@@ -33,7 +33,7 @@
 	<target name="entry-classes">
 		<property name="entry-classes" location="${as-someone}/.i-cached/entry-classes" />
 		<mkdir dir="${entry-classes}" />
-		<javac debug="true" destdir="${entry-classes}" encoding="UTF-8" includeantruntime="false" source="11" srcdir="${entry-src}" />
+		<javac debug="true" destdir="${entry-classes}" encoding="UTF-8" includeantruntime="false" release="17" srcdir="${entry-src}" />
 	</target>
 
 </project>

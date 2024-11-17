@@ -1,13 +1,11 @@
 package org.oikarinen.iwantdemo.mathlib;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MathlibTest {
 
@@ -23,17 +21,17 @@ public class MathlibTest {
 
 	@Test
 	public void firstZeroPrimes() {
-		assertThat(Mathlib.firstNPrimes(0), is(Arrays.asList()));
+		assertEquals(Arrays.asList(), Mathlib.firstNPrimes(0));
 	}
 
 	@Test
 	public void firstOnePrimes() {
-		assertThat(Mathlib.firstNPrimes(1), is(Arrays.asList(2)));
+		assertEquals(Arrays.asList(2), Mathlib.firstNPrimes(1));
 	}
 
 	@Test
 	public void firstThreePrimes() {
-		assertThat(Mathlib.firstNPrimes(3), is(Arrays.asList(2, 3, 5)));
+		assertEquals(Arrays.asList(2, 3, 5), Mathlib.firstNPrimes(3));
 	}
 
 }

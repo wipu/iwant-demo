@@ -12,6 +12,7 @@ import org.fluentjava.iwant.api.javamodules.JavaSrcModule;
 import org.fluentjava.iwant.api.javamodules.JavaSrcModule.IwantSrcModuleSpex;
 import org.fluentjava.iwant.api.model.Path;
 import org.fluentjava.iwant.api.model.Source;
+import org.fluentjava.iwant.api.wsdef.WorkspaceContext;
 import org.fluentjava.iwant.api.zip.Jar;
 import org.fluentjava.iwant.core.javafinder.WsdefJavaOf;
 import org.fluentjava.iwant.core.javamodules.JavaModules;
@@ -31,14 +32,6 @@ public class IwantDemoModules extends JavaModules {
 	private final JavaModule commonsMath = binModule("org.apache.commons",
 			"commons-math3", "3.6.1");
 
-	private static final String HAMCREST_VER = "1.3";
-
-	/**
-	 * The full hamcrest for modules that use Matchers
-	 */
-	private final JavaModule hamcrestAll = binModule("org.hamcrest",
-			"hamcrest-all", HAMCREST_VER);
-
 	private final Path joulu = FromGithub.user("wipu").project("joulu")
 			.commit("8e343a70d8b22e1bb9e7376762ee15ea9b401164");
 
@@ -52,8 +45,6 @@ public class IwantDemoModules extends JavaModules {
 
 		return JavaBinModule.providing(jar, java).end();
 	}
-
-	private final JavaModule junit = IwantDemoWorkspaceModuleProvider.junit;
 
 	private final JavaModule log4j = binModule("log4j", "log4j", "1.2.17");
 
@@ -77,7 +68,9 @@ public class IwantDemoModules extends JavaModules {
 	private final JavaSrcModule javabeanGenerator;
 	final JavaSrcModule cli;
 
-	IwantDemoModules(WsdefJavaOf wsdefJavaOf) {
+	IwantDemoModules(WsdefJavaOf wsdefJavaOf, WorkspaceContext ctx) {
+		Set<JavaModule> junit5runnerMods = ctx.iwantPlugin().junit5runner()
+				.withDependencies();
 		Path generatedJavaBeansJava = new GeneratedJavaBean(
 				"generatedJavaBeansJava.java",
 				Source.underWsroot("generated-javabeans/beans.txt"),
@@ -91,7 +84,7 @@ public class IwantDemoModules extends JavaModules {
 		JavaModule generatedJavaBeans = JavaBinModule
 				.providing(generatedJavaBeansJar, generatedJavaBeansJava).end();
 		JavaModule mathLib = iwantDemoModule("math-lib").noMainResources()
-				.mainDeps(commonsMath, slf4jApi).testDeps(hamcrestAll, junit)
+				.mainDeps(commonsMath, slf4jApi).testDeps(junit5runnerMods)
 				.testRuntimeDeps(slf4jLog4j12).end();
 		JavaModule sloppyLegacy = iwantDemoModule("sloppy-legacy")
 				.codeStyle(IwantDemoCodeStyles.LEGACY)
@@ -99,13 +92,14 @@ public class IwantDemoModules extends JavaModules {
 				.noMainResources().noTestJava().noTestResources().mainDeps()
 				.end();
 
-		javabeanGenerator = buildTimeModule(
-				IwantDemoWorkspaceModuleProvider.javabeanGenerator);
+		javabeanGenerator = buildTimeModule(IwantDemoWorkspaceModuleProvider
+				.javabeanGenerator(junit5runnerMods));
 
 		cli = iwantDemoModule("cli")
 				.mainDeps(commonsCli, generatedJavaBeans, jouluUnsignedByte(),
 						mathLib, slf4jApi, sloppyLegacy)
-				.mainRuntimeDeps(slf4jLog4j12).testDeps(commonsIo, junit).end();
+				.mainRuntimeDeps(slf4jLog4j12).testDeps(commonsIo)
+				.testDeps(junit5runnerMods).end();
 
 	}
 

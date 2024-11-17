@@ -3,11 +3,11 @@
 set -eu
 
 cyg() {
-  local IN=$1
-  case "$(uname)" in
-    CYGWIN*) cygpath --windows -a "$IN" ;;
-    *) echo "$IN" ;;
-  esac
+    local IN=$1
+    case "$(uname)" in
+	CYGWIN*) cygpath --windows -a "$IN" ;;
+	*) echo "$IN" ;;
+    esac
 }
 
 AS_SOMEONE=$(dirname "$0")/../../..
@@ -21,8 +21,8 @@ CLASSES=$CACHED/.internal/entry-classes
 CYG_CLASSES=$(cyg "$CLASSES")
 mkdir -p "$CLASSES"
 CYG_SRC=$(cyg "$AS_SOMEONE/with/java/org/fluentjava/iwant/entry/Iwant.java")
-javac -source 11 -g -d "$CYG_CLASSES" "$CYG_SRC"
+javac --release 11 -g -d "$CYG_CLASSES" "$CYG_SRC"
 
 java \
-  -Xmx3G \
-  -cp "$CYG_CLASSES" org.fluentjava.iwant.entry.Iwant "$CYG_AS_SOMEONE" "$@"
+    -Xmx3G \
+    -cp "$CYG_CLASSES" org.fluentjava.iwant.entry.Iwant "$CYG_AS_SOMEONE" "$@"

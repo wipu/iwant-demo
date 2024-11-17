@@ -30,11 +30,11 @@ public class IwantDemoWorkspace implements Workspace {
 	private final IwantDemoModules modules;
 	private final Path mainLog4jProperties = Source.underWsroot(
 			"common-resources/main-log4j-properties/log4j.properties");
-	private final FindbugsDistribution findbugs = FindbugsDistribution._3_0_1;
+	private final FindbugsDistribution findbugs = FindbugsDistribution._4_8_3;
 
 	public IwantDemoWorkspace(WorkspaceContext ctx) {
 		this.wsdefJavaOf = new WsdefJavaOf(ctx);
-		this.modules = new IwantDemoModules(wsdefJavaOf);
+		this.modules = new IwantDemoModules(wsdefJavaOf, ctx);
 	}
 
 	@Override
